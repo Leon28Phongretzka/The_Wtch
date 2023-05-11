@@ -1,0 +1,36 @@
+SWITCH LAYER 3:
+
+Config VLAN use the syntax:
+vlan #number
+
+Assign the VLAN address with syntax:
+int vlan #number
+ip address <ip> <subnet mask>
+
+Change mode of fastEthernet to trunk mode
+switchport trunk encapsulation dot1q
+switchport mode trunk
+
+SWITCH LAYER 2:
+Change mode of fastEthernet connect to SWITCH LAYER 3 to trunk
+switchport mode trunk
+
+Change mode of all other fastEthernet to access mode
+switchport mode access
+switchport access vlan #number
+
+SERVER:
+Assign Server IP address static.
+Go to the services and enable DHCP server.
+After that, create pool IP for each VLAN.
+Create scope for each VLAN.
+
+SWITCH LAYER 3 ( again ):
+Assign IP helper-address for each VLAN with syntax:
+ip helper-address <server_IP>
+
+Routing:
+ip routing
+
+Try it out!
+
